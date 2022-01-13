@@ -1,0 +1,42 @@
+{% extends "home/base.html" %}
+{% block content %}
+<body>
+    <div class="wrapper">
+      <!-- Sidebar -->
+      <nav id="sidebar">
+        <div class="sidebar-header">
+          <h3>Hunch Fermentation Lab</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+          <!-- <p>Temperature</p>
+          <p>CO2 Level</p> -->
+        </ul>
+      </nav>
+
+      <!-- Page Content -->
+      <div id="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-6">
+              <div class="card data-chart">
+                <div class="card-body">
+                  <div>
+                      <canvas id="line-chart" width="800" height="450"></canvas>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="card stirring-scheduler">
+                <div class="card-body">
+                  <h5 class="card-title">Stirring Schedule</h5>
+                  <p class="card-text">
+                    Times:
+                  </p>
+                  <a href="#" class="btn btn-primary">Add Time</a>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+{%endblock%}

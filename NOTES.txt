@@ -1,0 +1,3 @@
+1/12/2022
+bug: template cant access image in media folder in development 
+maybe issue with favicon.ico response in cmd????

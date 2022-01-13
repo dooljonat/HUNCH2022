@@ -1,0 +1,52 @@
+{% extends "home/base.html" %}
+{% block content %}
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+
+    .lab-selection {
+        margin-top: 5%;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row lab-selection flex-nowrap">
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Fermentation Nanolab</h5>
+                    <a href="{% url 'fermentationlab:index' %}" class="btn btn-primary"><i class='fas fa-angle-double-right'></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Crystal Nanolab</h5>
+                    <a href="#" class="btn btn-primary"><i class='fas fa-angle-double-right'></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Fungus Nanolab</h5>
+                    <a href="#" class="btn btn-primary"><i class='fas fa-angle-double-right'></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
