@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'blog',
     'home',
-    'fermentationlab'
+    'fermentationlab',
+    'shop.apps.ShopConfig'
 ]
 
 MIDDLEWARE = [
