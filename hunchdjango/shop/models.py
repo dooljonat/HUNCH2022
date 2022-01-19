@@ -19,3 +19,12 @@ class Purchase(models.Model):
         ('ET', 'Ethereum'),
         ('BC', 'Bitcoin')
     ]
+    payment_method = models.CharField(max_length=2, default='CC', choices=PAYMENT_METHODS)
+    time = models.DateTimeField(auto_now_add=True)
+    successful = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-time']
+
+    def __str__(self):
+        return f'{self.customer_full_name}, {self.payment_method}, {{self.item_name}}'

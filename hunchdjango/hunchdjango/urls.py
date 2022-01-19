@@ -5,10 +5,11 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', include('home.urls')),
-    path('fermentationlab', include('fermentationlab.urls'), name="fermentationlab"),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('', include('home.urls')),
+    path('fermentationlab', include('fermentationlab.urls'), name="fermentationlab"),
+    path('shop/', include('shop.urls'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()
