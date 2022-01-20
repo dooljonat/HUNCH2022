@@ -8,7 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', include('home.urls')),
-    path('fermentationlab', include('fermentationlab.urls'), name="fermentationlab"),
+    path('fermentationlab/', include('fermentationlab.urls'), name="fermentationlab"),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

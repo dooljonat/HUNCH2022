@@ -1,27 +1,22 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.http import HttpResponseNotFound, JsonResponse, HttpResponse
+from datetime import datetime, timedelta
 
 from .models import Temperature, CO2Level
 from .utils import lookback_options, colorPrimary, colorSuccess, colorDanger
-
-# Create your views here.
 
 
 def index(request):
     return render(request, 'fermentationlab/index.html', {})
 
 
-"""TODO: Make these return temperature and CO2Level
-   data in json format, going as far back from the current date as look_back
-"""
-
-
 def get_temperatures(request, look_back):
     if look_back not in lookback_options:
         look_back = 1
 
-    objects = Temperature.objects.all().order_by('-created_on')[:look_back][::-1]
+    objects = Temperature.objects.filter(
+        created_on__gte=datetime.now()-timedelta(days=look_back))
     created_on = []
     temperatures = []
     for x in objects:
@@ -44,7 +39,8 @@ def get_co2levels(request, look_back):
     if look_back not in lookback_options:
         look_back = 1
 
-    objects = CO2Level.objects.all().order_by('-created_on')[:look_back][::-1]
+    objects = CO2Level.objects.filter(
+        created_on__gte=datetime.now()-timedelta(days=look_back))
     created_on = []
     co2_levels = []
     for x in objects:
