@@ -10,8 +10,10 @@ from .utils import lookback_options, colorPrimary, colorSuccess, colorDanger
 def index(request):
     return render(request, 'fermentationlab/index.html', {})
 
-
-
+def get_lookback_options(request):
+    return JsonResponse({
+        'options': lookback_options
+    })
 
 def get_temperatures(request, look_back):
     if look_back not in lookback_options:
@@ -22,7 +24,7 @@ def get_temperatures(request, look_back):
     created_on = []
     temperatures = []
     for x in objects:
-        created_on.append(x.created_on)
+        created_on.append(x.created_on.date())
         temperatures.append(x.temperature)
 
     return JsonResponse({'title': f'Temperatures in last {look_back} days',
@@ -46,7 +48,7 @@ def get_co2levels(request, look_back):
     created_on = []
     co2_levels = []
     for x in objects:
-        created_on.append(x.created_on)
+        created_on.append(x.created_on.date())
         co2_levels.append(x.co2_level)
 
     return JsonResponse({'title': f'CO2Levels in last {look_back} days',
