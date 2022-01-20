@@ -11,6 +11,8 @@ def index(request):
     return render(request, 'fermentationlab/index.html', {})
 
 
+
+
 def get_temperatures(request, look_back):
     if look_back not in lookback_options:
         look_back = 1
