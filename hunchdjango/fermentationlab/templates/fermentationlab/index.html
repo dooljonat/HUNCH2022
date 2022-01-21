@@ -1,6 +1,11 @@
 {% extends "home/base.html" %}
 {% block content %}
 <style>
+  .center-div {
+    width: 50%;
+    margin: 0 auto;
+  }
+
   .page {
     background-color: #f3f2f7;
   }
@@ -15,21 +20,34 @@
     text-align: center;
     margin: 10px;
   }
+
+  .chart-card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+  }
 </style>
 <div class="title">
   <h2 class="title-text">Fermentation Lab</h2>
 </div>
 <div class="container-fluid page">
   <div class="row align-items-center">
+    <!--Left Column -->
     <div class="col-6">
-      <form id="lookbackForm">
-        <label for="year">Lookback period:</label>
-        <select name="lookback" id="lookback"></select>
-        <input type="submit" value="Load" name="_load">
-      </form>
-      <canvas class="data-chart" id="temperatureChart"></canvas>
-      <canvas class="data-chart" id="co2LevelChart"></canvas>
+      <!-- Charts Div -->
+      <div class="card chart-card">
+        <div class="center-div">
+          <form id="lookbackForm">
+            <label for="year">Lookback period:</label>
+            <select name="lookback" id="lookback"></select>
+            <input type="submit" value="Load" name="_load">
+          </form>
+        </div>
+        <canvas class="data-chart" id="temperatureChart"></canvas>
+        <canvas class="data-chart" id="co2LevelChart"></canvas>
+      </div>
+
     </div>
+    <!--Right column -->
     <div class="col-6"></div>
   </div>
 </div>
