@@ -6,19 +6,8 @@ from datetime import datetime, timedelta
 
 from .models import Temperature, CO2Level
 from .utils import lookback_options, colorPrimary, colorSuccess, colorDanger
-# from .camera import VideoCamera
 
 
-def index(request):
-    return render(request, 'core/index.html', {})
-
-# @gzip.gzip_page
-# def video_stream(request):
-#     try:
-#         cam = VideoCamera()
-#         return StreamingHttpResponse(gen_frames(cam), content_type="multipart/x-mixed-replace;boundary=frame")
-#     except:
-#         pass
 
 def get_lookback_options(request):
     return JsonResponse({
@@ -71,10 +60,3 @@ def get_co2levels(request, look_back):
                                  'data': co2_levels,
                              }]
                          }, })
-
-# # Reading video feed
-# def gen_frames(camera):
-#     while True:
-#         frame = camera.get_frame()
-#         yield (b'--frame\r\n'
-#                 b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
