@@ -1,4 +1,4 @@
-import Adafruit_DHT
+import Adafruit_DHT.DHT11
 import time
 from datetime import datetime, timedelta
 import pytz
