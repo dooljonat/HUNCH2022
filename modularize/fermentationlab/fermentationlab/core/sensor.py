@@ -25,4 +25,4 @@ def read_sensor():
             humidity_object.save()
         else:
             print("[FERMENTATIONLAB :: TEMP_HUMIDITY_SENSOR] Sensor failure. Check wiring.")
-        time.sleep(3)
+        time.sleep(10)
