@@ -1,16 +1,16 @@
-import Adafruit_DHT.DHT11
+import Adafruit_DHT
 import time
 from datetime import datetime, timedelta
 import pytz
 
-from . import models
 
-DHT_SENSOR = Adafruit_DHT.DHT11
+
+DHT_SENSOR = Adafruit_DHT
 DHT_PIN = 6
 
-def read_sensor():
+def read_sensor(models):
     while True:
-        humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
+        humidity, temperature = Adafruit_DHT.read(11, DHT_PIN)
         if humidity is not None and temperature is not None:
             dt = pytz.utc.localize(datetime.now())
             temperature_object = models.Temperature.objects.create(
