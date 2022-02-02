@@ -4,9 +4,8 @@ from django.views.decorators import gzip
 from django.http import HttpResponseNotFound, JsonResponse, HttpResponse, StreamingHttpResponse
 from datetime import datetime, timedelta
 
-from .models import Temperature, CO2Level
+from .models import Humidity, Temperature, CO2Level
 from .utils import lookback_options, colorPrimary, colorSuccess, colorDanger
-
 
 
 def get_lookback_options(request):
@@ -58,5 +57,28 @@ def get_co2levels(request, look_back):
                                  'backgroundColor': colorPrimary,
                                  'borderColor': colorPrimary,
                                  'data': co2_levels,
+                             }]
+                         }, })
+
+def get_humidity(request, look_back):
+    if look_back not in lookback_options:
+        look_back = 1
+
+    objects = Humidity.objects.filter(
+        created_on__gte=datetime.now()-timedelta(days=look_back))
+    created_on = []
+    humidities = []
+    for x in objects:
+        created_on.append(x.created_on.date())
+        humidities.append(x.temperature)
+
+    return JsonResponse({'title': f'Humidity in last {look_back} days',
+                         'data': {
+                             'labels': created_on,
+                             'datasets': [{
+                                 'label': 'Temperature',
+                                 'backgroundColor': colorPrimary,
+                                 'borderColor': colorPrimary,
+                                 'data': humidities,
                              }]
                          }, })
