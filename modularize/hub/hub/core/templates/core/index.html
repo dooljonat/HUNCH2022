@@ -1,0 +1,91 @@
+{% extends "core/base.html" %}
+{% block content %}
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+
+    .card-title-text {
+        text-align: center;
+        font-weight: 300;
+        font-size: 24px
+    }
+
+    .lab-selection-row {
+        margin-top: 5%;
+    }
+
+    .lab-selection-card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+        transition: 0.3s;
+    }
+
+    .lab-selection-card:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+        transition: 0.5s;
+    }
+
+    .lab-selection-button {
+        margin: auto;
+        width: 50%
+    }
+</style>
+
+
+<div class="container">
+    <div class="row lab-selection-row flex-nowrap">
+        <div class="col-sm">
+            <div class="card lab-selection-card" style="width: 18rem;">
+                <div class="card-body">
+                    <div>
+                        <h5 class="card-title-text">Fermentation Lab</h5>
+                    </div>
+                    <div class="lab-selection-button">
+                        <a href="{% url 'fermentationlab:index' %}" class="btn btn-primary"> Go <i
+                                class='fas fa-angle-double-right'></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm">
+            <div class="card lab-selection-card" style="width: 18rem;">
+                <div class="card-body">
+                    <div>
+                        <h5 class="card-title-text">Fungus Lab</h5>
+                    </div>
+                    <div class="lab-selection-button">
+                        <a href="{% url 'fermentationlab:index' %}" class="btn btn-primary"> Go <i
+                                class='fas fa-angle-double-right'></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>        
+        <div class="col-sm">
+            <div class="card lab-selection-card" style="width: 18rem;">
+                <div class="card-body">
+                    <div>
+                        <h5 class="card-title-text">Crystal Lab</h5>
+                    </div>
+                    <div class="lab-selection-button">
+                        <a href="{% url 'fermentationlab:index' %}" class="btn btn-primary"> Go <i
+                                class='fas fa-angle-double-right'></i></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
