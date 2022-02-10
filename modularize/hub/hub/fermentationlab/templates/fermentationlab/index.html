@@ -29,7 +29,7 @@
       </form>
       <!-- <canvas class="data-chart" id="temperatureChart"></canvas>
       <canvas class="data-chart" id="co2LevelChart"></canvas> -->
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -83,6 +83,23 @@
 
   let co2levelCtx = document.getElementById("co2LevelChart").getContext("2d");
   let co2levelChart = new Chart(co2levelCtx, {
+    type: "line",
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      scales: {
+        xAxes: [{
+          ticks: {
+            autoskip: true,
+            autoSkipPadding: 50
+          },
+        }]
+      }
+    }
+  });
+
+  let humidityCtx = document.getElementById("humidityChart").getContext("2d");
+  let humidityChart = new Chart(humidityCtx, {
     type: "line",
     options: {
       responsive: true,
@@ -154,6 +171,7 @@
   function loadAllCharts(option) {
     loadChart(temperatureChart, `/fermentationlab/charts/temperatures/${option}`);
     loadChart(co2levelChart, `/fermentationlab/charts/co2levels/${option}`);
+    loadChart(humidityChart, `/fermentationlab/charts/humidities/${option}`);
   }
 </script>
 {% endblock %}
