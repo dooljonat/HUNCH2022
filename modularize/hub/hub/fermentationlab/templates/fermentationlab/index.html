@@ -38,21 +38,22 @@
 <div class="container-fluid page">
   <div class="row align-items-center">
     <div class="col-6">
-      <div class="lookback">
+      <!-- Days to lookback selection -->
+      <div class="lookback" style="margin-left:15px">
         <form id="lookbackForm">
           <div class="row">
             <select name="lookback" id="lookback"></select>
-            <label for="year">Days</label>
+            <div class="col-2 my-auto">
+              <label for="year">Days</label>
+            </div>
             <div class="col-2 ml-auto">
               <input type="submit" class="btn btn-block rounded-0" value="Load" name="_load">
             </div>
           </div>
         </form>
       </div>
-
-      <!-- <canvas class="data-chart" id="temperatureChart"></canvas>
-      <canvas class="data-chart" id="co2LevelChart"></canvas> -->
-      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
+      <!-- Chart Carousel-->
+      <div class="carousel slide" data-interval="false">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
