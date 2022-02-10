@@ -1,11 +1,20 @@
 {% extends "core/base.html" %}
 {% block content %}
 <style>
+  .btn {
+    max-width: 200px;
+  }
+
   .page {
     background-color: #f3f2f7;
   }
 
-  .title {
+  .shadow-light {
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+  }
+
+  .shadow {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
   }
@@ -13,20 +22,34 @@
   .title-text {
     font-weight: bold;
     text-align: center;
-    margin: 10px;
+  }
+
+  .lookback {
+    background-color: #f25939 !important;
+  }
+
+  .carousel-chart-item {
+    padding: 20px;
   }
 </style>
-<div class="title">
+<div class="shadow">
   <h2 class="title-text">Fermentation Lab</h2>
 </div>
 <div class="container-fluid page">
   <div class="row align-items-center">
     <div class="col-6">
-      <form id="lookbackForm">
-        <label for="year">Lookback period:</label>
-        <select name="lookback" id="lookback"></select>
-        <input type="submit" value="Load" name="_load">
-      </form>
+      <div class="lookback">
+        <form id="lookbackForm">
+          <div class="row">
+            <select name="lookback" id="lookback"></select>
+            <label for="year">Days</label>
+            <div class="col-2 ml-auto">
+              <input type="submit" class="btn btn-block rounded-0" value="Load" name="_load">
+            </div>
+          </div>
+        </form>
+      </div>
+
       <!-- <canvas class="data-chart" id="temperatureChart"></canvas>
       <canvas class="data-chart" id="co2LevelChart"></canvas> -->
       <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
@@ -35,14 +58,14 @@
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
         </ol>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
+        <div class="carousel-inner shadow">
+          <div class="carousel-item active carousel-chart-item">
             <canvas class="data-chart d-block w-100" id="temperatureChart"></canvas>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item carousel-chart-item">
             <canvas class="data-chart d-block w-100" id="co2LevelChart"></canvas>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item carousel-chart-item">
             <canvas class="data-chart d-block w-100" id="humidityChart"></canvas>
           </div>
         </div>
