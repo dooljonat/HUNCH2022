@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('fermentationlab/', include('fermentationlab.urls'), name="fermentationlab"),
+    path('fungilab/', include('fungilab.urls'), name="fungilab")
 ]
