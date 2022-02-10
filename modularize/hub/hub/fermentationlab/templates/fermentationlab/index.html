@@ -53,7 +53,7 @@
         </form>
       </div>
       <!-- Chart Carousel-->
-      <div class="carousel slide" data-interval="false">
+      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false">
         <ol class="carousel-indicators">
           <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
           <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -79,10 +79,18 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-
     </div>
-    <div class="col-6">
-      <h1> BRUH BRUH BRUH</h1>
+    <div class="col-6 d-flex justify-content-center">
+      <div class="card shadow" style="width: 24rem">
+        {% load static %}
+        <img src="{% static 'fermentationlab/doof.jpg' %}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title d-flex justify-content-center">Take Picture</h5>
+          <div class="col text-center">
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
