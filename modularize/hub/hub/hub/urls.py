@@ -16,9 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+import core.views as core_views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
+    path('auth/', include('users.urls'), name='users'),
+    path('accounts/profile/', core_views.index, name="index"),
     path('fermentationlab/', include('fermentationlab.urls'), name="fermentationlab"),
     path('fungilab/', include('fungilab.urls'), name="fungilab")
 ]

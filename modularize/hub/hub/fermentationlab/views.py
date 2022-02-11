@@ -7,7 +7,7 @@ from .utils import lookback_options, colorPrimary, colorSuccess, colorDanger
 
 
 def index(request):
-    return render(request, 'fermentationlab/index.html', {})
+    return render(request, 'fermentationlab/index.html', {'user': request.user})
 
 
 def get_lookback_options(request):
