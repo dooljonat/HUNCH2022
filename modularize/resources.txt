@@ -1,0 +1,4 @@
+USER ICON: <a href="https://www.flaticon.com/free-icons/user" title="user icons">User icons created by Freepik - Flaticon</a>
+ROCKET ICON: <a href="https://www.flaticon.com/free-icons/nasa" title="nasa icons">Nasa icons created by berkahicon - Flaticon</a>
+
+ADDING REGISTER, LOGIN, AND LOGOUT PAGES: https://python.plainenglish.io/user-registration-and-login-authentication-in-django-2f3450479409
