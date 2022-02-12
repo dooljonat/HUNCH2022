@@ -16,9 +16,10 @@ def register(request):
             form.save()
 
             messages.success(request, f'Your account has been created. You can log in now!')
-            return redirect('login')
+            return redirect('http://127.0.0.1:8000/auth/login/')
     else:
         form = UserRegistrationForm()
 
     context = {'form': form}
     return render(request, 'users/register.html', context)
+

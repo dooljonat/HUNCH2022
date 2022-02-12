@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')),
     path('auth/', include('users.urls'), name='users'),
-    path('accounts/profile/', core_views.accounts, name="accounts_redirect"),
+    path('accounts/profile/', core_views.account_redirect, name="acccount_rediriect"),
     path('fermentationlab/', include('fermentationlab.urls'), name="fermentationlab"),
     path('fungilab/', include('fungilab.urls'), name="fungilab")
 ]

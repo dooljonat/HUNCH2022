@@ -5,5 +5,5 @@ from django.shortcuts import redirect, render
 def index(request):
     return render(request, 'core/index.html', {'user': request.user})
 
-def accounts(request):
+def account_redirect(request):
     return redirect('index')
