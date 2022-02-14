@@ -38,7 +38,7 @@
 <div class="container-fluid page">
   <div class="row align-items-center">
     <div class="col-6">
-      <!-- Days to lookback selection -->
+      <!-- Days lookback selection -->
       <div class="lookback" style="margin-left:15px">
         <form id="lookbackForm">
           <div class="row">
@@ -47,6 +47,13 @@
               <label for="year">Days</label>
             </div>
             <div class="col-2 ml-auto">
+              <a class="btn btn-block rounded-0" href="download-data/">
+              {% load static %}
+              <img src="{% static 'fermentationlab/download-ico.png' %}" width="16">
+            </a>
+            </div>
+            
+            <div class="col-2 ">
               <input type="submit" class="btn btn-block rounded-0" value="Load" name="_load">
             </div>
           </div>

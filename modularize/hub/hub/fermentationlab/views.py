@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from datetime import datetime, timedelta
 
 from .models import Humidity, Temperature, CO2Level
@@ -8,6 +8,10 @@ from .utils import lookback_options, colorPrimary, colorSuccess, colorDanger
 
 def index(request):
     return render(request, 'fermentationlab/index.html', {'user': request.user})
+
+
+def download_data(request):
+    return render(request, 'fermentationlab/download-data.html')
 
 
 def get_lookback_options(request):
