@@ -31,6 +31,10 @@
   .carousel-chart-item {
     padding: 20px;
   }
+
+  .wrap-text {
+    text-align: justify;
+  }
 </style>
 <div class="shadow">
   <h2 class="title-text">Fermentation Lab</h2>
@@ -48,11 +52,11 @@
             </div>
             <div class="col-2 ml-auto">
               <a class="btn btn-block rounded-0" href="download-data/">
-              {% load static %}
-              <img src="{% static 'fermentationlab/download-ico.png' %}" width="16">
-            </a>
+                {% load static %}
+                <img src="{% static 'fermentationlab/download-ico.png' %}" width="16">
+              </a>
             </div>
-            
+
             <div class="col-2 ">
               <input type="submit" class="btn btn-block rounded-0" value="Load" name="_load">
             </div>
@@ -90,11 +94,17 @@
     <div class="col-6 d-flex justify-content-center">
       <div class="card shadow" style="width: 24rem">
         {% load static %}
-        <img src="{% static 'fermentationlab/doof.jpg' %}" class="card-img-top">
+        <img src="{% static 'fermentationlab/camera-ico.png' %}" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title d-flex justify-content-center">Take Picture</h5>
           <div class="col text-center">
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+
+            {% if user.is_authenticated %}
+            <a href="#" class="btn btn-primary">
+              <h5 class="card-title d-flex justify-content-center">Take Picture</h5>
+            </a>
+            {% else %}
+            <h5 class="card-title d-flex justify-content-center wrap-text">Please login</h5>
+            {% endif %}
           </div>
         </div>
       </div>
