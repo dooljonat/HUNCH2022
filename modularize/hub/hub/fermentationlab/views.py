@@ -1,9 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from datetime import datetime, timedelta
 
 from .models import Humidity, Temperature, CO2Level
 from .utils import lookback_options, colorPrimary, colorSuccess, colorDanger
+from .forms import DownloadDataForm, model_dict, lookback_dict
 
 
 def index(request):
@@ -11,7 +12,20 @@ def index(request):
 
 
 def download_data(request):
-    return render(request, 'fermentationlab/download-data.html')
+    # If this is a POST method we need to process the form data
+    if request.method == 'POST':
+        form = DownloadDataForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data['model_field'])
+            model = model_dict.get(form.cleaned_data['model_field'])
+            lookback = lookback_dict.get(form.cleaned_data['lookback_field'])
+            return HttpResponseRedirect(f'/fermentationlab/charts/{model}/{lookback}')
+
+    # If a GET (or any other method) we'll create a blank form
+    else:
+        form = DownloadDataForm()
+
+    return render(request, 'fermentationlab/download-data.html', {'form': form})
 
 
 def get_lookback_options(request):
