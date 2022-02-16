@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\modularize",
+    "\\modularize\\fermentationlab",
+    "\\modularize\\hub\\hub",
+    "\\modularize\\hub\\hub\\fermentationlab"
   ],
-  "SelectedNode": "\\NOTES.txt",
   "PreviewInSolutionExplorer": false
 }
