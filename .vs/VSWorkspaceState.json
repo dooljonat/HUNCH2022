@@ -1,7 +1,17 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\modularize",
+    "\\modularize\\hub",
+    "\\modularize\\hub\\hub",
+    "\\modularize\\hub\\hub\\core",
+    "\\modularize\\hub\\hub\\core\\templates",
+    "\\modularize\\hub\\hub\\core\\templates\\core",
+    "\\modularize\\hub\\hub\\fermentationlab",
+    "\\modularize\\hub\\hub\\fermentationlab\\migrations",
+    "\\modularize\\hub\\hub\\users\\templates",
+    "\\modularize\\hub\\hub\\users\\templates\\users"
   ],
-  "SelectedNode": "\\NOTES.txt",
+  "SelectedNode": "\\modularize\\hub\\hub\\fungilab\\urls.py",
   "PreviewInSolutionExplorer": false
 }

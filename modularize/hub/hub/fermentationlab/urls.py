@@ -9,5 +9,5 @@ urlpatterns = [
     path('charts/temperatures/<int:look_back>', views.get_temperatures),
     path('charts/co2levels/<int:look_back>', views.get_co2levels),
     path('charts/humidities/<int:look_back>', views.get_humidities),
-    path('user/imagegallery', views.imagegallery)
+    path('user/image-gallery/', views.image_gallery, name='image-gallery')
 ]

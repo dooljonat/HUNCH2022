@@ -26,6 +26,9 @@ def download_data(request):
         form = DownloadDataForm()
 
     return render(request, 'fermentationlab/download-data.html', {'form': form})
+def image_gallery(request):
+    return render(request, 'fermentationlab/image-gallery.html')
+
 
 
 def get_lookback_options(request):
