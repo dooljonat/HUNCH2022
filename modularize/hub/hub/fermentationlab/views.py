@@ -37,11 +37,6 @@ def take_picture(request):
 
 
 def photo_gallery(request):
-    img = PiCameraImage()
-    img.upload = "img/jonat/penguin.jpg"
-    img.user = request.user
-    img.save()
-
     # TODO: VALIDATE IF USER IS LOGGED IN OR NOT
 
     # TODO: Get all images belonging to user
