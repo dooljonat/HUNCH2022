@@ -37,10 +37,10 @@ def take_picture(request):
 
 
 def photo_gallery(request):
-    # img = PiCameraImage()
-    # img.upload = "img/jonat/penguin.jpg"
-    # img.user = request.user
-    # img.save()
+    img = PiCameraImage()
+    img.upload = "img/jonat/penguin.jpg"
+    img.user = request.user
+    img.save()
 
     # TODO: VALIDATE IF USER IS LOGGED IN OR NOT
 
@@ -48,11 +48,14 @@ def photo_gallery(request):
     user = request.user
     objects = PiCameraImage.objects.filter(user=request.user)
 
-    image_links = []
+    images = []
     for obj in objects:
-        image_links.append("/media/" + str(obj.upload))
-
-    return render(request, 'fermentationlab/photo-gallery.html', {'image_links': image_links})
+        img = []
+        img.append("/media/" + str(obj.upload))
+        img.append(str(obj.created_on.date()))
+        img.append(obj.created_on.strftime("%H:%M:%S"))
+        images.append(img)
+    return render(request, 'fermentationlab/photo-gallery.html', {'images': images})
 
 
 def get_lookback_options(request):
