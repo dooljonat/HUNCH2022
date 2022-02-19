@@ -11,6 +11,11 @@ from .forms import DownloadDataForm, model_dict, lookback_dict
 
 
 def index(request):
+    if request.user.is_authenticated:
+        latest_image = PiCameraImage.objects.latest('created_on')
+        latest_image_link = "/media/" + str(latest_image.upload)
+        return render(request, 'fermentationlab/index.html', {'user': request.user, 'latest_image_link': latest_image_link})
+
     return render(request, 'fermentationlab/index.html', {'user': request.user})
 
 
@@ -38,6 +43,10 @@ def take_picture(request):
 
 def photo_gallery(request):
     # TODO: VALIDATE IF USER IS LOGGED IN OR NOT
+    # img = PiCameraImage()
+    # img.user = request.user
+    # img.upload = "img/jonat/penguin.jpg"
+    # img.save()
 
     # TODO: Get all images belonging to user
     user = request.user

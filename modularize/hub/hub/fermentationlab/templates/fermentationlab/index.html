@@ -35,6 +35,10 @@
   .wrap-text {
     text-align: justify;
   }
+
+  .picture-card {
+    width: 18rem;
+  }
 </style>
 <div class="shadow">
   <h2 class="title-text">Fermentation Lab</h2>
@@ -92,13 +96,11 @@
       </div>
     </div>
     <div class="col-6 d-flex justify-content-center">
-      <div class="card shadow" style="width: 24rem">
-        {% load static %}
-        <img src="{% static 'fermentationlab/camera-ico.png' %}" class="card-img-top">
+      {% if user.is_authenticated %}
+      <div class="card shadow picture-card">
+        <img src={{ latest_image_link }} class="card-img-top">
         <div class="card-body">
           <div class="col text-center">
-
-            {% if user.is_authenticated %}
             <div class="row justify-content-center">
               <a href="pi/take-picture/" class="btn btn-primary">
                 <h5 class="card-title d-flex justify-content-center">Take Picture</h5>
@@ -108,13 +110,21 @@
                 <img src="{% static 'fermentationlab/photo.png' %}" width="16"> Gallery
               </a>
             </div>
-
-            {% else %}
-            <h5 class="card-title d-flex justify-content-center wrap-text">Please login</h5>
-            {% endif %}
           </div>
         </div>
       </div>
+      {% else %}
+      <div class="card shadow picture-card">
+        {% load static %}
+        <img src="{% static 'fermentationlab/camera-ico.png' %}" class="card-img-top">
+        <div class="card-body">
+          <div class="col text-center">
+            <h5> Please login </h5>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
     </div>
   </div>
 </div>
