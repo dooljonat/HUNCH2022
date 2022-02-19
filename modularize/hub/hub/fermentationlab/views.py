@@ -35,8 +35,27 @@ def take_picture(request):
     # TODO: CALL CELERY WORKER TO TAKE PICTURE ON RASPBERRY PI HERE
     return redirect('fermentationlab:index')
 
+
 def photo_gallery(request):
-    return render(request, 'fermentationlab/photo-gallery.html')
+    img = PiCameraImage()
+    img.upload = "img/jonat/penguin.jpg"
+    img.user = request.user
+    img.save()
+
+    # TODO: VALIDATE IF USER IS LOGGED IN OR NOT
+
+    # TODO: Get all images belonging to user
+    user = request.user
+    objects = PiCameraImage.objects.filter(user=request.user)
+
+    images = []
+    for obj in objects:
+        img = []
+        img.append("/media/" + str(obj.upload))
+        img.append(str(obj.created_on.date()))
+        img.append(obj.created_on.strftime("%H:%M:%S"))
+        images.append(img)
+    return render(request, 'fermentationlab/photo-gallery.html', {'images': images})
 
 
 def get_lookback_options(request):
