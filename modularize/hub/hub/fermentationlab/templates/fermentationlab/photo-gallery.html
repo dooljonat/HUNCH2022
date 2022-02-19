@@ -1,4 +1,7 @@
 {% extends 'core/base.html' %}
 {% block content %}
-    FUCK
+    {% for image_link in image_links %}
+    {% load static %}
+    <img src={{image_link}} width="128">
+    {% endfor %}
 {% endblock%}
