@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from . import settings
 
 import core.views as core_views
 
@@ -23,6 +25,9 @@ urlpatterns = [
     path('', include('core.urls')),
     path('auth/', include('users.urls'), name='users'),
     path('accounts/profile/', core_views.account_redirect, name="acccount_rediriect"),
-    path('fermentationlab/', include('fermentationlab.urls'), name="fermentationlab"),
+    path('fermentationlab/', include('fermentationlab.urls')),
     path('fungilab/', include('fungilab.urls'), name="fungilab")
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+print(settings.MEDIA_URL)
+print(settings.MEDIA_ROOT)

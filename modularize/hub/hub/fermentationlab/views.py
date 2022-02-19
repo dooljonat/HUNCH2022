@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from datetime import datetime, timedelta
+from django.shortcuts import redirect
+from django.core.files import File  # you need this somewhere
+import urllib
 
-from .models import Humidity, Temperature, CO2Level
+from .models import Humidity, Temperature, CO2Level, PiCameraImage
 from .utils import lookback_options, colorPrimary, colorSuccess, colorDanger
 from .forms import DownloadDataForm, model_dict, lookback_dict
 
@@ -26,6 +29,14 @@ def download_data(request):
         form = DownloadDataForm()
 
     return render(request, 'fermentationlab/download-data.html', {'form': form})
+
+
+def take_picture(request):
+    # TODO: CALL CELERY WORKER TO TAKE PICTURE ON RASPBERRY PI HERE
+    return redirect('fermentationlab:index')
+
+def photo_gallery(request):
+    return render(request, 'fermentationlab/photo-gallery.html')
 
 
 def get_lookback_options(request):

@@ -99,9 +99,16 @@
           <div class="col text-center">
 
             {% if user.is_authenticated %}
-            <a href="#" class="btn btn-primary">
-              <h5 class="card-title d-flex justify-content-center">Take Picture</h5>
-            </a>
+            <div class="row justify-content-center">
+              <a href="pi/take-picture/" class="btn btn-primary">
+                <h5 class="card-title d-flex justify-content-center">Take Picture</h5>
+              </a>
+              <a class="btn" href="photo-gallery/">
+                {% load static %}
+                <img src="{% static 'fermentationlab/photo.png' %}" width="16"> Gallery
+              </a>
+            </div>
+
             {% else %}
             <h5 class="card-title d-flex justify-content-center wrap-text">Please login</h5>
             {% endif %}
