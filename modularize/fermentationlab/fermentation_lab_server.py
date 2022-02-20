@@ -8,6 +8,7 @@ import enum
 import json
 
 from sensor import Sensor
+from camera import Camera
 import utils as utils
 
 """ This script will be on the Raspberry pi
@@ -50,21 +51,25 @@ def main():
     conn, addr = sock.accept()
     print('socket accepted, got connection object')
 
-    s = Sensor()
-    temperature_list, humidity_list = s.create_test_data()
+    # Create interface objects
+    sensor = Sensor()
+    temperature_list, humidity_list = sensor.create_test_data()
+
+    camera = Camera()
 
     # Main loop
     while True:
         # Get sensor data
-        # temperature_obj, humidity_obj = read_sensor()
-        # temperature_list.append(temperature_obj)
-        # humidity_list.append(humidity_obj)
+        temperature_obj, humidity_obj = sensor.read_sensor()
+        temperature_list.append(temperature_obj)
+        humidity_list.append(humidity_obj)
 
         # Get SOCKETS message
         message = conn.recv(1024)
         message = message.decode()
 
         if message == "get_data":
+            print("SENDING SENSOR DATA "+ str(datetime.now()))
             # Send back the list of temperature, humidity objects in json format
             send_back_dict = data_to_dict([temperature_list, humidity_list],
                                           ["Temperatures", "Humidities"])
@@ -78,9 +83,19 @@ def main():
             humidity_list.clear()
 
         elif message == "take_picture":
-            print("Take Picture!")
+            print("TAKING AND SENDING PICTURE AT " + str(datetime.now()))
+            file_path = camera.take_picture()
+
+            file = open(file_path, 'rb')
+            image_data = file.read(2048)
+
+            while image_data:
+                conn.send(image_data)
+                image_data = file.read(2048)
+
+            file.close()
         else:
-            print("Error! Unknown request: " + message)
+            print("Waiting for message or received unknown message " + message)
 
         time.sleep(50)
 
