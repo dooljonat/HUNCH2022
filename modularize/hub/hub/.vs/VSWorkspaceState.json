@@ -1,15 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\core",
-    "\\core\\templates",
-    "\\core\\templates\\core",
     "\\fermentationlab",
-    "\\fungilab\\migrations",
-    "\\users",
     "\\users\\templates",
     "\\users\\templates\\users"
   ],
-  "SelectedNode": "\\fermentationlab\\models.py",
+  "SelectedNode": "\\fermentationlab\\views.py",
   "PreviewInSolutionExplorer": false
 }
