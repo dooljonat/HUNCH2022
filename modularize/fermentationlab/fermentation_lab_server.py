@@ -63,6 +63,8 @@ def main():
         if data is not None:
             temperature_list.append(data[0])
             humidity_list.append(data[1])
+            print(temperature_list)
+            print(humidity_list)
 
         # Get SOCKETS message
         message = conn.recv(1024)
@@ -96,8 +98,6 @@ def main():
             file.close()
         else:
             print("Waiting for message or received unknown message " + message)
-
-        time.sleep(50)
 
 
 def data_to_dict(data_list, titles):

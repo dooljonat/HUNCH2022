@@ -9,7 +9,7 @@ class Camera:
         sleep(5)
         self.camera.capture('/home/pi/Desktop/image.jpg')
         self.camera.stop_preview()
-        return 'home/pi/Desktop/image.jpg'
+        return '/home/pi/Desktop/image.jpg'
     
     def test_take_picture(self):
         dir = os.path.dirname(__file__)
