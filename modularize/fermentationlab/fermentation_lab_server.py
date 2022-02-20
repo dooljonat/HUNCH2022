@@ -27,7 +27,7 @@ import utils as utils
 # DHT_PIN = 6
 
 # For sockets
-HOST = 'localhost'
+HOST = '192.168.1.189'
 PORT = 65439
 
 
@@ -53,7 +53,6 @@ def main():
 
     # Create interface objects
     sensor = Sensor()
-    temperature_list, humidity_list = sensor.create_test_data()
 
     camera = Camera()
 
