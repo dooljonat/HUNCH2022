@@ -1,19 +1,18 @@
-#import Adafruit_DHT
+# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
+# SPDX-License-Identifier: MIT
+
 import time
-from datetime import datetime, timedelta
-import pytz
+import datetime
+import board
+import adafruit_dht
 
-# DHT_SENSOR = Adafruit_DHT
-# DHT_PIN = 6
-
-# Data Models
-
+# Initial the dht device, with data pin connected to:
+dhtDevice = adafruit_dht.DHT11(board.D6)
 
 class Temperature:
     def __init__(self, created_on, temperature):
         self.created_on = created_on
         self.temperature = temperature
-
 
 class Humidity:
     def __init__(self, created_on, humidity):
@@ -21,55 +20,22 @@ class Humidity:
         self.humidity = humidity
 
 
-class Sensor:
-    def read_sensor(self):
-        temperature_obj = None
-        humidity_obj = None
-        humidity, temperature = Adafruit_DHT.read(11, DHT_PIN)
-        if humidity is not None and temperature is not None:
-            dt = pytz.utc.localize(datetime.now())
-            temperature_obj = Temperature(
-                created_on=dt, temperature=temperature)
-            humidity_obj = Humidity(created_on=dt, humidity=humidity)
+def read_sensor():
+    try:
+        # Print the values to the serial port
+        temperature_c = dhtDevice.temperature
+        temperature_f = temperature_c * (9 / 5) + 32
+        humidity = dhtDevice.humidity
 
-            print("Temp={0:0.1f}C Humidity={1:0.1f}%".format(
-                temperature, humidity))
-        else:
-            print(
-                "[FERMENTATIONLAB :: TEMP_HUMIDITY_SENSOR] Sensor failure. Check wiring.")
+        temp = Temperature(datetime.now, temperature_f)
+        humidity = Humidity(datetime.now(), humidity)
 
-        return temperature_obj, humidity_obj
+    except RuntimeError as error:
+        # Errors happen fairly often, DHT's are hard to read, just keep going
+        print(error.args[0])
+        time.sleep(2.0)
+    except Exception as error:
+        dhtDevice.exit()
+        raise error
 
-    def create_test_data(self):
-        temperature_list = []
-        humidity_list = []
-
-        temp1 = Temperature(created_on=pytz.utc.localize(
-            datetime.now()), temperature="70")
-        temp2 = Temperature(created_on=pytz.utc.localize(
-            datetime.now()), temperature="71")
-        temp3 = Temperature(created_on=pytz.utc.localize(
-            datetime.now()), temperature="72")
-        temp4 = Temperature(created_on=pytz.utc.localize(
-            datetime.now()), temperature="73")
-
-        humidity1 = Humidity(created_on=pytz.utc.localize(
-            datetime.now()), humidity="31")
-        humidity2 = Humidity(created_on=pytz.utc.localize(
-            datetime.now()), humidity="32")
-        humidity3 = Humidity(created_on=pytz.utc.localize(
-            datetime.now()), humidity="33")
-        humidity4 = Humidity(created_on=pytz.utc.localize(
-            datetime.now()), humidity="34")
-
-        temperature_list.append(temp1)
-        temperature_list.append(temp2)
-        temperature_list.append(temp3)
-        temperature_list.append(temp4)
-
-        humidity_list.append(humidity1)
-        humidity_list.append(humidity2)
-        humidity_list.append(humidity3)
-        humidity_list.append(humidity4)
-
-        return temperature_list, humidity_list
+    time.sleep(2.0)
