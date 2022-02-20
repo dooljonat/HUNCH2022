@@ -31,6 +31,8 @@ class Sensor:
             temp = Temperature(datetime.now(), temperature_f)
             humidity = Humidity(datetime.now(), humidity)
 
+            return [temp, humidity]
+
         except RuntimeError as error:
             # Errors happen fairly often, DHT's are hard to read, just keep going
             print(error.args[0])

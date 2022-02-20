@@ -59,9 +59,10 @@ def main():
     # Main loop
     while True:
         # Get sensor data
-        temperature_obj, humidity_obj = sensor.read_sensor()
-        temperature_list.append(temperature_obj)
-        humidity_list.append(humidity_obj)
+        data = sensor.read_sensor()
+        if data is not None:
+            temperature_list.append(data[0])
+            humidity_list.append(data[1])
 
         # Get SOCKETS message
         message = conn.recv(1024)
