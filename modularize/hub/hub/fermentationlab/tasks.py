@@ -35,10 +35,10 @@ def send_data_request():
 
    received = sock.recv(1024)
    received = received.decode()
-   print("RECEIVED:" , received)
+   print("RECEIVED:" , type(received))
    sock.close()
-   time.sleep(5)
 
+   time.sleep(1)
 
 
 # @periodic_task(run_every=(crontab(minute='*/5')), name="send_data_request", ignore_result=True)
