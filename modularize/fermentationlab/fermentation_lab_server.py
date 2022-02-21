@@ -11,20 +11,6 @@ from sensor import Sensor
 from camera import Camera
 import utils as utils
 
-""" This script will be on the Raspberry pi
-    for the FERMENTATION LAB"""
-
-""" TODO:
-    When this server receives the message to send data,
-    send json data back to client;
-    Add sensor reading functionality;
-    Store the sensor reading in a dictionary (clear it everytime data is successfully sent to server)
-    Add camera command functionality;
-"""
-
-# For temperature and humidity sensor
-# DHT_SENSOR = Adafruit_DHT
-# DHT_PIN = 6
 
 # For sockets
 HOST = '172.20.10.7'
