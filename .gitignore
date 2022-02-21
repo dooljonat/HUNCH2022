@@ -1,4 +1,6 @@
 **/__pycache__/
 **/venv/
 db.sqlite3~
-/redis-stable
+/modularize/hub/redis-stable/
+/modularize/hub/venv/
+
