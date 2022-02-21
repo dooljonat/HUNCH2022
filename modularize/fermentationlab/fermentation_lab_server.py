@@ -118,7 +118,7 @@ def create_socket():
     # instantiate a socket object
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-    sock.settimeout(5)
+    sock.settimeout(10)
     print('socket instantiated')
 
     # bind the socket
