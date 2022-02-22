@@ -73,12 +73,14 @@ def main():
                     file_path = camera.take_picture()
 
                     file = open(file_path, 'rb')
-                    image_data = file.read(2048)
+                    image_data = file.read(4096)
 
                     while image_data:
                         conn.send(image_data)
-                        image_data = file.read(2048)
-
+                        image_data = file.read(4096)
+                        print(image_data)
+                        
+                    
                     file.close()
                     break
                 else:
