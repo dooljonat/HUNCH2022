@@ -11,12 +11,12 @@ from .forms import DownloadDataForm, model_dict, lookback_dict
 
 
 def index(request):
-    if request.user.is_authenticated:
-        latest_image = PiCameraImage.objects.latest('created_on')
+    try:
+        latest_image = PiCameraImage.objects.filter(user=request.user).latest('created_on')
         latest_image_link = "/media/" + str(latest_image.upload)
         return render(request, 'fermentationlab/index.html', {'user': request.user, 'latest_image_link': latest_image_link})
-
-    return render(request, 'fermentationlab/index.html', {'user': request.user})
+    except PiCameraImage.DoesNotExist:
+        return render(request, 'fermentationlab/index.html', {'user': request.user, 'latest_image_link': "/media/server-image.jpg"})
 
 
 def download_data(request):
