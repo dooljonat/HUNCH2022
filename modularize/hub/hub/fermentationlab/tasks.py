@@ -1,8 +1,13 @@
-from celery import Celery
+from celery import shared_task
 
-BROKER_URL = 'redis://localhost:6379/0'
-app = Celery('tasks', broker=BROKER_URL)
+import time
+import socket
 
-@app.task
-def add(x, y):
-    return x + y
+# logger = get_task_logger(__name__)
+
+
+# @periodic_task(run_every=(crontab(minute='*/5')), name="send_data_request", ignore_result=True)
+# def some_task():
+#     """Sends a request for temperature and humidity data from the Raspberry PI, receives it,
+#        then adds it to the Temperature and Humidity DB if successful"""
+#     logger.info("Sent data request")
